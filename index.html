@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Brand Wiki</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+  <script defer src="assets/js/app.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-header__brand" href="#/wiki/index">
+        <span class="site-header__logo" aria-hidden="true">W</span>
+        <span class="site-header__title">Brand Wiki</span>
+      </a>
+      <nav class="site-header__nav">
+        <a href="#/wiki/index">Index</a>
+        <a href="#/wiki/log">Log</a>
+        <a href="#/about">About</a>
+      </nav>
+      <form class="site-header__search" onsubmit="event.preventDefault(); window.BrandWiki.search(this.q.value);">
+        <input name="q" type="search" placeholder="Search wiki…" aria-label="Search" autocomplete="off" />
+      </form>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar" aria-label="Wiki navigation">
+      <div class="sidebar__section">
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="#/wiki/index">Main index</a></li>
+          <li><a href="#/wiki/log">Recent changes</a></li>
+          <li><a href="#/random">Random article</a></li>
+        </ul>
+      </div>
+      <div class="sidebar__section" id="sidebar-categories">
+        <h3>Categories</h3>
+        <div class="sidebar__loading">Loading…</div>
+      </div>
+      <div class="sidebar__section">
+        <h3>Tools</h3>
+        <ul>
+          <li><a href="#/wiki/index">All articles</a></li>
+          <li><a href="javascript:window.print()">Print this page</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="content" id="content">
+      <article class="article">
+        <p class="loading">Loading article…</p>
+      </article>
+    </main>
+
+    <aside class="toc" id="toc" aria-label="Table of contents"></aside>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>Brand Wiki — private knowledge base. Content is markdown under <code>/wiki</code>.</p>
+      <p>Rendered client-side. See <a href="#/wiki/index">index</a> · <a href="CLAUDE.md">schema</a>.</p>
+    </div>
+  </footer>
+
+  <div id="search-results" class="search-results" hidden></div>
+</body>
+</html>
